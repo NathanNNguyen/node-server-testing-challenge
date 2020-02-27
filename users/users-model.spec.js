@@ -31,7 +31,7 @@ describe('Testing the users model', () => {
 
       // ASSERTION
       expect(user).toEqual({ id: 1, name: 'nathan' });
-    })
+    });
   });
 
   describe('Testing the remove function', () => {
@@ -47,4 +47,4 @@ describe('Testing the users model', () => {
       expect(users[0]).toBe(undefined);
     });
   });
-})
+});

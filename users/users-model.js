@@ -8,7 +8,7 @@ module.exports = {
 }
 
 
-async function add(userData) {
+function add(userData) {
   return db('users').insert(userData)
 
     .then(arr => {
@@ -20,14 +20,14 @@ async function add(userData) {
   // })
 };
 
-async function remove(id) {
+function remove(id) {
   return db('users').del(id)
 };
 
-async function getAll() {
+function getAll() {
   return db('users');
 };
 
-async function findById(id) {
+function findById(id) {
   return db('users').where({ id }).first();
 };
