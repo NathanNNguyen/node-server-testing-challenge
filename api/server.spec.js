@@ -11,26 +11,22 @@ describe('the server', () => {
   // for endpoint ending with '/'
   describe('GET /', () => {
     it('should send back the right status code and object', async () => {
-      return req(server)
-        .get('/')
-        .then(res => {
-          expect(res.status).toBe(200)
-          expect(res.type).toBe('application/json')
-          expect(res.body).toEqual({ message: `It's working` })
-        });
+      const res = await req(server).get('/');
+      expect(res.status).toBe(200);
+      // expect(res.type).toBe('application/json');
+      expect(res.type).toMatch(/json/i);
+      expect(res.body).toEqual({ message: `It's working` });
     });
   });
 
   //for endpoint ending with '/users'
   describe('GET /users', () => {
     it('should send back a list of users', async () => {
-      return req(server)
-        .get('/users')
-        .then(res => {
-          expect(res.status).toBe(200);
-          expect(res.type).toBe('application/json');
-          expect(res.body.length).toBe(0)
-        })
-    })
-  })
-});
+      const res = await req(server).get('/users');
+      expect(res.status).toBe(200);
+      expect(res.type).toBe('application/json');
+      // expect(res.type).toMatch(/json/i);
+      expect(res.body.length).toBe(0);
+    });
+  });
+})

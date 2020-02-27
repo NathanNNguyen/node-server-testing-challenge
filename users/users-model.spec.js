@@ -21,7 +21,7 @@ describe('Testing the users model', () => {
       // use the db in case helper function breaks
       const users = await db('users');
       expect(users.length).toBe(1);
-      expect(users[0].name).toBe('nathan')
+      expect(users[0].name).toBe('nathan');
     });
 
     it('should show the inserted user', async () => {
@@ -30,7 +30,7 @@ describe('Testing the users model', () => {
       const user = await Users.add(userData);
 
       // ASSERTION
-      expect(user).toEqual({ id: 1, name: 'nathan' })
+      expect(user).toEqual({ id: 1, name: 'nathan' });
     })
   });
 
@@ -38,13 +38,13 @@ describe('Testing the users model', () => {
 
     it('should remove a user', async () => {
       // set up 
-      const users = await db('users')
-      const userData = { id: 1, name: 'nathan' }
+      const users = await db('users');
+      const userData = { id: 1, name: 'nathan' };
       await Users.remove(userData.id);
 
       // ASSERTION
-      expect(users.length).toBe(0)
-      expect(users[0]).toBe(undefined)
+      expect(users.length).toBe(0);
+      expect(users[0]).toBe(undefined);
     });
   });
-});
+})
